@@ -22,15 +22,8 @@ def save_file(profil_name, application, login_person, encrypted_password):
         f.write(f"{application},{profil_name},{encrypted_password}\n")
         print('file has been saved')
 
-# View all paswords (not finished yet desyncription!!!!!)
+# View all paswords
 def view_file(login_person):
-#    try:
-#        with open(login_person, "rb") as f:
-#            for i, line in enumerate(f, start=1):
-#                line = line.decode('utf-8').strip()
-#                print(f"{i} - {line}")
-#    except FileNotFoundError:
-#        print("No passwords stored yet.")
     print("\nYour stored passwords:")
     passwords = []
     

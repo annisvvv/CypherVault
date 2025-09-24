@@ -1,7 +1,7 @@
 import os
+import base64
 import hashlib
 from cryptography.fernet import Fernet
-import base64
 
 stored_password_file_type = "strdpss.bin"
 stored_master_password_file_type = "mstrps.bin"
