@@ -22,8 +22,8 @@ cryptography>=3.0.0
 🚀 Installation
 
 Clone the repository:
-bashgit clone https://github.com/yourusername/password-manager.git
-cd password-manager
+1 - bashgit clone (https://github.com/annisvvv/PassWord-Manager.git)
+2 - cd password-manager
 
 Install dependencies:
 bashpip install cryptography
