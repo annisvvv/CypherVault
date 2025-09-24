@@ -1,4 +1,5 @@
 import os
+from Banner import typing_print
 import hashlib
 from cryptography.fernet import Fernet
 from Encryption import hash_master_password
@@ -7,16 +8,18 @@ def profilcheckcreation():
     stored_master_password_file_type = "mstrps.bin"
     log = False
     while log == False:
-        x = input('do you have an account (y,n) : ')
+        x = input(typing_print('Do you have an account (y,n) : ', delay=0.05)).lower()
+        print('\n')
         if x == 'y':
             
             if not os.path.exists(stored_master_password_file_type):
-                print("No accounts exist. Please create a new account.")
+                typing_print("No accounts exist. Please create a new account.\n", delay=0.05)
                 
             elif os.path.exists(stored_master_password_file_type):
                 #logg = False
                 #while logg == False:
-                master_password = input("Provide us your master password: ")
+                typing_print('Provide us with your mester password : ', delay=0.05)
+                master_password = input()
 
                 data = master_password.encode('utf-8')
                 hasher = hashlib.sha256()
@@ -35,11 +38,11 @@ def profilcheckcreation():
             
                                 if hashed_password == stored_hash:
                                     login_person = person_part + ".txt"  # Create filename like "person 1.txt"
-                                    print("You are logged in")
+                                    typing_print('login in... Done\n', delay=0.05)
                                     return login_person
                                 
                     if not found_match :
-                        print('no match for your password. try another password or create a new account if you havant')
+                        typing_print('\nno match for your password. try another password or create a new account if you havent.\n', delay=0.05)
                                     
                                 #elif hashed_password != stored_hash:
                                     #print("This account does not exist, check your password or create a new account if you haven't.")
@@ -47,8 +50,8 @@ def profilcheckcreation():
                                     
         
         elif x == 'n':
-            print("Enter the master password, be careful only you have to know it!")
-            master_password = input("Master password: ")
+            typing_print("Enter the master password, be careful only you have to know it!", delay=0.05)
+            master_password = input(typing_print('Masterpassword : ', delay=0.05))
 
             data = master_password.encode('utf-8')
             hasher = hashlib.sha256()
@@ -68,12 +71,12 @@ def profilcheckcreation():
                         
                                 if hashed_password == stored_hash:
                                     login_person = person_part + ".txt"
-                                    print("This password exists, you are logged in!")
+                                    typing_print("This password exists, you are logged in!", delay=0.05)
                                     return login_person
     
             # Create new account
             hash_master_password(master_password, stored_master_password_file_type)
-            print("Account created.")
+            typing_print("Account creation... Done", delay=0.05)
     
             # Find the person number that was just created
             with open(stored_master_password_file_type, "rb") as login:
@@ -87,11 +90,11 @@ def profilcheckcreation():
                     
                             if hashed_password == stored_hash:
                                 login_person = person_part + ".txt"
-                                print("You are logged in!")
+                                typing_print("login in... Done\n", delay=0.05)
                                 return login_person
     
-            print('A problem just occurred :( . retry')
+            typing_print("A problem just occurred :( .Retry", delay=0.05)
 
             log = 1
         else:
-            print('you did a mistake. retry')
+            typing_print("A problem just occurred :( .Retry", delay=0.05)

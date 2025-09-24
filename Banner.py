@@ -1,7 +1,11 @@
-from Banner import typing_print
-from Profil import profilcheckcreation
-from Password_strenght import check_password_strength
-from Password_handling import add_password, save_file, view_file, search_password, delect_password
+import time
+
+def typing_print(text, delay=0.05):
+    for char in text:
+        print(char, end="", flush=True)
+        time.sleep(delay)
+    print()  # new line after finishing
+    return ''
 
 ascii_art = """
  ██████╗██╗██████╗ ██╗  ██╗███████╗██████╗ ██╗   ██╗ █████╗ ██╗   ██╗██╗  ████████╗
@@ -11,31 +15,3 @@ ascii_art = """
 ╚██████╗██║██║     ██║  ██║███████╗██║  ██║ ╚████╔╝ ██║  ██║╚██████╔╝███████╗██║   
  ╚═════╝╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝   
 """
-
-typing_print(ascii_art, delay=0.003)  # lower delay for big art
-
-login_person = profilcheckcreation()
-
-while True:
-        typing_print("\n☆ What do you want to perform :\n" \
-        "1 - Add a new password.\n" \
-        "2 - search for password.\n" \
-        "3 - delete a password.\n" \
-        "4 - view passwords.\n" \
-        "5 - exit\n", delay=0.03)
-
-        y = input(typing_print("Your choice : ", delay=0.03))
-        print('\n')
-
-        if y == "1":
-                application, profil_name, encrypted_password = add_password(login_person)
-                save_file(profil_name, application, login_person, encrypted_password)   
-        elif y == "2":
-                search_password(login_person)
-        elif y == "3":
-                delect_password(login_person)
-        elif y == '4':
-                view_file(login_person)
-        elif y == '5':
-                typing_print('Exiting program. . . .', delay=0.05)
-                break
