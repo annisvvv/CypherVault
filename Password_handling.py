@@ -1,5 +1,6 @@
 import os
 from Banner import typing_print
+from Password_strenght import check_password_strength
 from cryptography.fernet import Fernet
 from Encryption import encrypt_stored_password, decrypt_stored_password
 
@@ -9,8 +10,16 @@ def add_password(login_person):
 
     application = input(typing_print('Enter the application : ', delay=0.05))
     profil_name = input(typing_print('Enter profil name : ', delay=0.05))
-    password = input(typing_print('Enter Password : ', delay=0.05))
+        
+    while True:
+        password = input(typing_print('Enter Password : ', delay=0.05))
 
+        choice = check_password_strength(password)
+
+        if choice == 'y':
+            break
+        
+    
     typing_print("Encrypting password...\n", delay=0.05)
     encrypted_password = encrypt_stored_password(password, key_file)
 
