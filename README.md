@@ -1,4 +1,4 @@
-# Password Manager "CipherVault"
+# Password Manager "CypherVault"
 
 A secure, command-line password manager built in Python that helps you store, retrieve, and manage your passwords locally with strong encryption.
 
