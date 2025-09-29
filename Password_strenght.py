@@ -18,29 +18,29 @@ def check_password_strength(password):
      digits = r"string.digits"
      special_chars = r"string.punctuation"
 
-     match_lenght = len(password) > 13
+     match_lenght = len(password)
      match_alphabet_lower = re.search(alphabet_lower, password)
      match_alphabet_upper = re.search(alphabet_upper, password)
      match_digits = re.search(digits, password)
      match_special_chars = re.search(special_chars, password)
 
-     x = 5
-
+     x = 0
+     if match_lenght >= 14:
+          x = x + 1
      if match_alphabet_lower is None:
-          match_alphabet_lower = False
-          x = x - 1
+          match_alphabet_lower = True
+          x = x + 1
      if match_alphabet_upper is None:
-          match_alphabet_upper = False
-          x = x - 1
+          match_alphabet_upper = True
+          x = x + 1
      if match_digits is None:
-          match_digits = False
-          x = x - 1
+          match_digits = True
+          x = x + 1
      if match_special_chars is None:
-          match_special_chars = False
-          x = x - 1
+          match_special_chars = True
+          x = x + 1
 
-     matches = [(match_lenght, "- Password lenght must be of 14 minimum") ,
-                 (match_alphabet_lower, "- Password must contain at least one lower case alphabet"), 
+     matches = [(match_alphabet_lower, "- Password must contain at least one lower case alphabet"), 
                  (match_alphabet_upper, "- Password must contain at leaste one uper case alphabet"), 
                  (match_digits, "- Passwod must contain at leaste one digit"), 
                  (match_special_chars, "- Password must contain at leaste one special keyword")]
@@ -62,8 +62,10 @@ def check_password_strength(password):
      typing_print(f'{stars}\n', delay=0.01)
 
      for case, prblm in matches:
-          if case == False:
+          if case is None:
                typing_print(f'{prblm}', delay=0.01)
+     if match_lenght < 14 :
+          print('- Lenght has to be minimum of 14 digits')
 
      print('\n')
      choice = input(typing_print('Do you want to use this password ? (y/n) : '))
