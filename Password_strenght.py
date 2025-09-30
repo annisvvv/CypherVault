@@ -29,16 +29,12 @@ def check_password_strength(password):
      if match_lenght <= 14:
           x = x - 1
      if match_alphabet_lower is None:
-          #match_alphabet_lower = True
           x = x - 1
      if match_alphabet_upper is None:
-          #match_alphabet_upper = True
           x = x - 1
      if match_digits is None:
-          #match_digits = True
           x = x - 1
      if match_special_chars is None:
-          #match_special_chars = True
           x = x - 1
 
      matches = [(match_alphabet_lower, "- Password must contain at least one lower case alphabet"), 
