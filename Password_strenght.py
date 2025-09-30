@@ -18,27 +18,28 @@ def check_password_strength(password):
      digits = r"string.digits"
      special_chars = r"string.punctuation"
 
+     # return none if nothing found
      match_lenght = len(password)
-     match_alphabet_lower = re.search(alphabet_lower, password)
+     match_alphabet_lower = re.search(alphabet_lower, password) 
      match_alphabet_upper = re.search(alphabet_upper, password)
      match_digits = re.search(digits, password)
      match_special_chars = re.search(special_chars, password)
 
-     x = 0
-     if match_lenght >= 14:
-          x = x + 1
+     x = 5
+     if match_lenght <= 14:
+          x = x - 1
      if match_alphabet_lower is None:
-          match_alphabet_lower = True
-          x = x + 1
+          #match_alphabet_lower = True
+          x = x - 1
      if match_alphabet_upper is None:
-          match_alphabet_upper = True
-          x = x + 1
+          #match_alphabet_upper = True
+          x = x - 1
      if match_digits is None:
-          match_digits = True
-          x = x + 1
+          #match_digits = True
+          x = x - 1
      if match_special_chars is None:
-          match_special_chars = True
-          x = x + 1
+          #match_special_chars = True
+          x = x - 1
 
      matches = [(match_alphabet_lower, "- Password must contain at least one lower case alphabet"), 
                  (match_alphabet_upper, "- Password must contain at leaste one uper case alphabet"), 
