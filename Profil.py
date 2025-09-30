@@ -37,7 +37,7 @@ def profilcheckcreation():
                                 stored_hash = parts[1]  # the hash
             
                                 if hashed_password == stored_hash:
-                                    login_person = person_part + ".txt"  # Create filename like "person 1.txt"
+                                    login_person = person_part + ".bin"  # Create filename like "person 1.txt"
                                     typing_print('login in... Done\n', delay=0.05)
                                     return login_person
                                 
@@ -89,7 +89,7 @@ def profilcheckcreation():
                             stored_hash = parts[1]  # the hash
                     
                             if hashed_password == stored_hash:
-                                login_person = person_part + ".txt"
+                                login_person = person_part + ".bin"
                                 typing_print("login in... Done\n", delay=0.05)
                                 return login_person
     
