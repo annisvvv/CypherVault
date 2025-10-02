@@ -1,23 +1,40 @@
 import os
 from Banner import typing_print
 from Password_strenght import check_password_strength
+from Password_generator import secure_random_string
 from cryptography.fernet import Fernet
 from Encryption import encrypt_stored_password, decrypt_stored_password
 
 key_file = "ky.bin"
 # ready to save encrypted password
 def add_password(login_person):
-
-    application = input(typing_print('Enter the application : ', delay=0.05))
-    profil_name = input(typing_print('Enter profil name : ', delay=0.05))
-        
-    while True:
-        password = input(typing_print('Enter Password : ', delay=0.05))
-
-        choice = check_password_strength(password)
-
-        if choice == 'y':
+    choice_about_rndmpass = input(typing_print('Do you want to use a random generated password? (y/n) : ', delay=0.05))
+    print('\n')
+    while True :
+        if choice_about_rndmpass == 'y':
+            application = input(typing_print('Enter the application : ', delay=0.05))
+            profil_name = input(typing_print('Enter profil name : ', delay=0.05))
+            password = secure_random_string(16)
+            typing_print('Creating random password . . .', delay=0.05)
+            typing_print(f'Your random generated password : {password}', delay=0.05)
             break
+
+        elif choice_about_rndmpass == 'n':
+            application = input(typing_print('Enter the application : ', delay=0.05))
+            profil_name = input(typing_print('Enter profil name : ', delay=0.05))
+        
+            x = True
+            while x ==True:
+                password = input(typing_print('Enter Password : ', delay=0.05))
+
+                choice = check_password_strength(password)
+
+                if choice == 'y':
+                    break
+            break
+
+        else :
+            print('You did a mistake')
         
     
     typing_print("Encrypting password...\n", delay=0.05)
